@@ -21,8 +21,9 @@
         <input type="text" placeholder="Title" id="titleForm" />
         <input type="text" placeholder="Author" id="authorForm" />
         <input type="text" placeholder="Pages" id="pagesForm" />
-        <p>Read?</p>
-        <input type="checkbox" value="Read?" id="readCheck" />
+        <label for="readCheck"
+          ><input type="checkbox" value="Read?" id="readCheck" />Read?</label
+        >
         <input type="submit" value="Add Book" id="submitButton" />
       </div>
       <div class="container">
@@ -42,8 +43,8 @@
               <p id="pagesP">876 pages</p>
             </div>
             <div class="buttons">
-              <button id="readToggle">Read</button
-              ><button id="deleteButton">Delete</button>
+              <button class="readToggle">Read</button>
+              <button class="deleteButton">Delete</button>
             </div>
           </div>
         </div>

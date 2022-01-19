@@ -58,14 +58,14 @@ body {
   border: 2px solid #50514f;
 }
 
-#readToggle {
+.readToggle {
   padding: 10px 20px;
   border-radius: 5px;
   border-style: none;
   border: 1px solid #50514f;
 }
 
-#deleteButton {
+.deleteButton {
   padding: 10px 20px;
   border-radius: 5px;
   border-style: none;
@@ -129,4 +129,8 @@ body {
 
 .headingRead {
   margin-left: 15px;
+}
+
+.notread {
+  background-color: #ff6b6b;
 }

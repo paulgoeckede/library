@@ -10,29 +10,63 @@ const readCheck = document.getElementById("readCheck");
 
 //Add a function to add a book to the library (array). Simple push should do the trick.
 Book.prototype.addBook = function(){
-    library.push(this);
-    books.innerHTML = "";
-    library.forEach(function(book, index){
+    library.push(this); //adds new Book to library array
+    books.innerHTML = ""; //deletes current list
+    library.forEach(function(book, index){ //for each book in the array creates a book div and adds it
         const newDiv = document.createElement("div");
-        let newHTML = `<div class="text"><p id="titleP">${book.title}</p><p id="authorP">${book.author}</p><p id="pagesP">${book.pages} pages</p></div><div class="buttons"><button id="readToggle">Read</button><button id="deleteButton" data-buttonindex="${index}">Delete</button>`
+        let newHTML = `<div class="text"><p id="titleP">${book.title}</p><p id="authorP">${book.author}</p><p id="pagesP">${book.pages} pages</p></div><div class="buttons"><button class="readToggle">Read</button><button class="deleteButton">Delete</button>`
         newDiv.classList.add("book");
         newDiv.innerHTML = newHTML;
         newDiv.setAttribute("data-index", index)
+        newDiv.setAttribute("data-read", book.read);
         newDiv.setAttribute("id", book.title);
         books.appendChild(newDiv);
+        if(!book.read){ //if book has not been read then change style
+            newDiv.classList.add("notread");
+        } else {
+            newDiv.querySelector(".readToggle").innerHTML = "Not read";
+        }
     })
+
+
+    //Functionality of the remove button. All books are selected and then the event listener is added for each one
+    const deleteButtons = document.querySelectorAll(".deleteButton");
+    const deleteArray = Array.from(deleteButtons);
+    deleteArray.forEach(function(button){
+        button.addEventListener("click", () => {
+            const book = button.parentElement.parentElement;
+            book.remove();
+            library.splice(book.getAttribute("data-index", 1));
+            updateIndex();
+        });
+    });
+
+    //Functonality of the Read Status button. If toggled, the book div should change to grean color, if untoggled it should change to red.
+    const readButtons = document.querySelectorAll(".readToggle");
+    const readArray = Array.from(readButtons);
+    readArray.forEach(function(button){
+        const book = button.parentElement.parentElement;
+        button.addEventListener("click", () => {
+            book.classList.toggle("notread");
+            if(book.classList.contains("notread")){
+                button.innerHTML = "Read";
+                library[book.dataset.index].read = false;
+            } else{
+                button.innerHTML = "Not read";
+                library[book.dataset.index].read = true;
+            }
+        });
+    });
+};
+
+//This function is to make sure the data-index attribute is updated each time a book is removed from the list to keep track of each books position in the list
+function updateIndex(){
     const currentBooks = document.querySelectorAll(".book");
     const currentBooksArray = Array.from(currentBooks);
     currentBooksArray.forEach(function(book, index){
-        const deleteButton = document.querySelector(`[data-buttonindex="${index}"]`);
-        deleteButton.addEventListener("click", () => {
-            const currentBook = document.querySelector(`[data-index="${index}"]`);
-            books.removeChild(currentBook);
-            library.splice(index, 1);
-            console.log(library);
-        })
+        book.setAttribute("data-index", index);
     });
-};
+}
 
 const submitButton = document.getElementById("submitButton");
 submitButton.addEventListener("click", () => {
