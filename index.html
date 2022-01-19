@@ -9,21 +9,45 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="top-content">
-      <h1>Your library</h1>
-      <p>
-        This is your library. Add and remove books by pressing the appropriate
-        buttons. This was developed as part of The Odin Projects curriculum.
-      </p>
+    <div class="content">
+      <div class="header">
+        <h1>Your library</h1>
+        <p>
+          This is your library. Add and remove books by pressing the appropriate
+          buttons. This was developed as part of The Odin Projects curriculum.
+        </p>
+      </div>
+      <div class="form">
+        <input type="text" placeholder="Title" id="titleForm" />
+        <input type="text" placeholder="Author" id="authorForm" />
+        <input type="text" placeholder="Pages" id="pagesForm" />
+        <p>Read?</p>
+        <input type="checkbox" value="Read?" id="readCheck" />
+        <input type="submit" value="Add Book" id="submitButton" />
+      </div>
+      <div class="container">
+        <div class="headings">
+          <div class="headingsText">
+            <p class="headingTitle">Title</p>
+            <p class="headingAuthor">Author</p>
+            <p class="headingPages">Pages</p>
+          </div>
+          <p class="headingRead">Status</p>
+        </div>
+        <div class="books">
+          <div class="book">
+            <div class="text">
+              <p id="titleP">The Lord of the Rings</p>
+              <p id="authorP">JRR Tolkien</p>
+              <p id="pagesP">876 pages</p>
+            </div>
+            <div class="buttons">
+              <button id="readToggle">Read</button
+              ><button id="deleteButton">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="form">
-      <input type="text" value="Title" />
-      <input type="text" value="Author" />
-      <input type="text" value="Pages" />
-      <p>Read?</p>
-      <input type="checkbox" value="Read?" />
-      <input type="submit" value="Add Book" />
-    </div>
-    <div class="container"></div>
   </body>
 </html>
