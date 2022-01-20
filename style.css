@@ -29,6 +29,37 @@ body {
   margin: 20px auto;
   width: 90%;
   justify-content: space-between;
+  align-items: center;
+}
+
+#titleForm,
+#authorForm,
+#pagesForm {
+  width: 20%;
+  height: 30px;
+  font-size: 16px;
+  font-size: max(16px, 1em);
+  font-family: inherit;
+  padding: 0.25em 0.5em;
+  background-color: #f5f5f5;
+  border: 2px solid var(--input-border);
+  border-radius: 4px;
+}
+
+#submitButton {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border-style: none;
+  border: 1px solid #50514f;
+  font-family: inherit;
+  transition: transform 0.05s;
+}
+
+#submitButton:hover {
+  cursor: pointer;
+  background-color: #dac7c7;
+  transform: scale(1.05);
+  box-shadow: 0px 20px 24px -22px rgba(0, 0, 0, 0.72);
 }
 
 .container {
@@ -47,15 +78,24 @@ body {
   gap: 3px;
 }
 
+#placeholder {
+  font-size: 16px;
+  font-size: max(16px, 1em);
+  font-family: inherit;
+  color: rgb(182, 177, 177);
+}
+
 .book {
   width: 90%;
   height: 80px;
   background-color: #c7f0bd;
+  font-size: 16px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   border-radius: 10px;
   border: 2px solid #50514f;
+  overflow: hidden;
 }
 
 .readToggle {
@@ -125,10 +165,6 @@ body {
   display: flex;
   align-items: space-between;
   width: 90%;
-}
-
-.headingRead {
-  margin-left: 15px;
 }
 
 .notread {
